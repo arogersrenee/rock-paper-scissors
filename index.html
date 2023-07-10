@@ -35,37 +35,39 @@ let computerScore = 0;
 let numberOfGames = 5;
 
 function rockPaperScissors(playerSelection, computerSelection){
-            // get player & computer selection
-            playerSelection = playerInput();
-            computerSelection = getComputerChoice();
-            console.log("Player One: " + playerSelection);
-            console.log("Computer: " + computerSelection);
-            
-            //game play
-            if(playerSelection == computerSelection){
-                return "It's a tie";
-            } else if(playerSelection == "rock" && computerSelection == "scissors"){
-                playerScore++;
-                return `You Win! ${playerSelection} beats ${computerSelection}`;
-            } else if(playerSelection == "paper" && computerSelection == "rock"){
-                playerScore++;
-                return `You Win! ${playerSelection} beats ${computerSelection}`;
-            } else if(playerSelection == "scissors" && computerSelection == "paper"){
-                playerScore++;
-                return `You Win! ${playerSelection} beats ${computerSelection}`;
-            } else { 
-                computerScore++;
-                return `You Lose! ${computerSelection} beats ${playerSelection}`;
-            }  
-        }
+    // get player & computer selection
+    playerSelection = playerInput();
+    computerSelection = getComputerChoice();
+    console.log("Player One: " + playerSelection);
+    console.log("Computer: " + computerSelection);
     
+    //game play
+    if(playerSelection == computerSelection){
+        return "It's a tie";
+    } else if(playerSelection == "rock" && computerSelection == "scissors"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if(playerSelection == "paper" && computerSelection == "rock"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if(playerSelection == "scissors" && computerSelection == "paper"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else { 
+        computerScore++;
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }  
+}
+    
+let round = 1;
+
 function game(){
-    for(let i = 0; i <= numberOfGames; i++){
-        i++
-        
-        rockPaperScissors();     
+    for(let i = 0; i < numberOfGames; i++){
+        console.log(`Round: ${round}`)
+        console.log(rockPaperScissors());     
         console.log("Player One Score = " + playerScore);
         console.log("Computer Score = " + computerScore);
+        ++round
     }
 
     while(i = 5){
