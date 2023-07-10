@@ -13,16 +13,17 @@
 function getComputerChoice (){
    let randomComputerChoice = Math.floor(Math.random()* 3);
    if(randomComputerChoice == 0){
-    return "rock"
+    return "Rock"
    } else if(randomComputerChoice == 1){
-    return "paper"
-   } return "scissors"
+    return "Paper"
+   } return "Scissors"
 }
 
 // get player choice function: player will input RPS, case-insensitive
 function playerInput(){
     playerSelection = prompt("Rock, Paper or Scissors?");
     playerSelection = playerSelection.toLowerCase();
+    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
     return playerSelection;
 }
 
@@ -31,8 +32,6 @@ let playerScore = 0;
 let computerScore = 0;
 
 /* rockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
-
-let numberOfGames = 5;
 
 function rockPaperScissors(playerSelection, computerSelection){
     // get player & computer selection
@@ -58,7 +57,13 @@ function rockPaperScissors(playerSelection, computerSelection){
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
     }  
 }
-    
+
+/* game() use rockPaperScissors INSIDE of this one to play a (numberOfGames) round game that keeps score and reports a winner or loser at the end. 
+
+*/    
+
+let numberOfGames = 5;
+
 let round = 1;
 
 function game(){
@@ -70,7 +75,7 @@ function game(){
         ++round
     }
 
-    while(i = 5){
+    while(i = numberOfGames){
     if(playerScore == computerScore){
         return "It's a tie"
     } else if(playerScore > computerScore){
@@ -81,10 +86,7 @@ function game(){
 
 console.log(game())
 
-/* game() use rockPaperScissors INSIDE of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
-- use console.log() to display the results of each round and winner at the end.
-- use prompt() to get the input from the user
-*/
+
 
     </script>
 </body>
