@@ -10,7 +10,6 @@
 
     <script>
 /* getComputerChoice function: the computer will randomly return  either "rock", "paper", or "scissors"*/
-
 function getComputerChoice (){
    let randomComputerChoice = Math.floor(Math.random()* 3);
    if(randomComputerChoice == 0){
@@ -20,49 +19,65 @@ function getComputerChoice (){
    } return "scissors"
 }
 
-/* rockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
-
-
-
-
-
-    // score counter
-    let playerScore = 0;
-    let computerScore = 0;
-
-function rockPaperScissors(playerSelection, computerSelection){
-    // get player & computer selection
+// get player choice function: player will input RPS, case-insensitive
+function playerInput(){
     playerSelection = prompt("Rock, Paper or Scissors?");
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = getComputerChoice();
-    console.log("Player one: " + playerSelection);
-    console.log("Computer: " + computerSelection);
+    return playerSelection;
+}
+
+// score counter
+let playerScore = 0;
+let computerScore = 0;
+
+/* rockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
+
+let numberOfGames = 5;
+
+function rockPaperScissors(playerSelection, computerSelection){
+            // get player & computer selection
+            playerSelection = playerInput();
+            computerSelection = getComputerChoice();
+            console.log("Player One: " + playerSelection);
+            console.log("Computer: " + computerSelection);
+            
+            //game play
+            if(playerSelection == computerSelection){
+                return "It's a tie";
+            } else if(playerSelection == "rock" && computerSelection == "scissors"){
+                playerScore++;
+                return `You Win! ${playerSelection} beats ${computerSelection}`;
+            } else if(playerSelection == "paper" && computerSelection == "rock"){
+                playerScore++;
+                return `You Win! ${playerSelection} beats ${computerSelection}`;
+            } else if(playerSelection == "scissors" && computerSelection == "paper"){
+                playerScore++;
+                return `You Win! ${playerSelection} beats ${computerSelection}`;
+            } else { 
+                computerScore++;
+                return `You Lose! ${computerSelection} beats ${playerSelection}`;
+            }  
+        }
     
-    //game play
-    if(playerSelection == computerSelection){
-        return "It's a tie";
-        // rockPaperScissors();
-    } else if(playerSelection == "rock" && computerSelection == "scissors"){
-        playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else if(playerSelection == "paper" && computerSelection == "rock"){
-        playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else if(playerSelection == "scissors" && computerSelection == "paper"){
-        playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else { 
-        computerScore++;
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
-    }    
+function game(){
+    for(let i = 0; i <= numberOfGames; i++){
+        i++
+        
+        rockPaperScissors();     
+        console.log("Player One Score = " + playerScore);
+        console.log("Computer Score = " + computerScore);
     }
-    
-    console.log(rockPaperScissors());  
-    console.log("Player Score = " + playerScore);
-    console.log("Computer Score = " + computerScore);
-    
 
+    while(i = 5){
+    if(playerScore == computerScore){
+        return "It's a tie"
+    } else if(playerScore > computerScore){
+        return "Player One wins the game!"
+    } return "Computer wins the game!"
+    }
+}
 
+console.log(game())
 
 /* game() use rockPaperScissors INSIDE of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
 - use console.log() to display the results of each round and winner at the end.
