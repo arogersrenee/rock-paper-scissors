@@ -22,15 +22,47 @@ function getComputerChoice (){
 
 /* rockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
 
+
+
+
+
+    // score counter
+    let playerScore = 0;
+    let computerScore = 0;
+
 function rockPaperScissors(playerSelection, computerSelection){
+    // get player & computer selection
     playerSelection = prompt("Rock, Paper or Scissors?");
     playerSelection = playerSelection.toLowerCase();
     computerSelection = getComputerChoice();
-    console.log(playerSelection)
-    console.log(computerSelection)
-}
+    console.log("Player one: " + playerSelection);
+    console.log("Computer: " + computerSelection);
+    
+    //game play
+    if(playerSelection == computerSelection){
+        return "It's a tie";
+        // rockPaperScissors();
+    } else if(playerSelection == "rock" && computerSelection == "scissors"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if(playerSelection == "paper" && computerSelection == "rock"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if(playerSelection == "scissors" && computerSelection == "paper"){
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else { 
+        computerScore++;
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }    
+    }
+    
+    console.log(rockPaperScissors());  
+    console.log("Player Score = " + playerScore);
+    console.log("Computer Score = " + computerScore);
+    
 
-rockPaperScissors()
+
 
 /* game() use rockPaperScissors INSIDE of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
 - use console.log() to display the results of each round and winner at the end.
