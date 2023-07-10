@@ -8,6 +8,7 @@
 <body>
     
 <script>
+
     /* getComputerChoice function: the computer will randomly return  either "rock", "paper", or "scissors"*/
     function getComputerChoice() {
         let randomComputerChoice = Math.floor(Math.random() * 3);
@@ -19,10 +20,9 @@
     }
 
     // get player choice function: player will input RPS, case-insensitive
-    function playerInput() {
+    function getPlayerInput() {
         playerSelection = prompt("Rock, Paper or Scissors?");
-        playerSelection = playerSelection.toLowerCase();
-        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
         return playerSelection;
     }
 
@@ -34,7 +34,7 @@
 
     function rockPaperScissors(playerSelection, computerSelection) {
         // get player & computer selection
-        playerSelection = playerInput();
+        playerSelection = getPlayerInput();
         computerSelection = getComputerChoice();
         console.log("Player One: " + playerSelection);
         console.log("Computer: " + computerSelection);
@@ -67,23 +67,23 @@
 
     function game() {
         for (let i = 0; i < numberOfGames; i++) {
-            console.log(`Round: ${round}`)
+            console.log(`Round: ${round}`);
             console.log(rockPaperScissors());
             console.log("Player One Score = " + playerScore);
             console.log("Computer Score = " + computerScore);
-            ++round
+            ++round;
         }
 
         while (i = numberOfGames) {
             if (playerScore == computerScore) {
-                return "It's a tie"
+                return "It's a tie";
             } else if (playerScore > computerScore) {
-                return "Player One wins the game!"
-            } return "Computer wins the game!"
+                return "Player One wins the game!";
+            } return "Computer wins the game!";
         }
     }
 
-    console.log(game())
+    console.log(game());
 
 
 
