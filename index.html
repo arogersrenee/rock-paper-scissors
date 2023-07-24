@@ -52,6 +52,7 @@
     let playerScore = 0;
     let computerScore = 0;
 
+
     /* RockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
 
     function RockPaperScissors(playerSelection, computerSelection) {
@@ -63,29 +64,22 @@
         //game play
         if (playerSelection == computerSelection) {
             results.innerHTML = `<h3>"It's a tie"</h3>`;
-            return "It's a tie";
-
         } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
             playerScore++;
             results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
-            return `You Win! ${playerSelection} beats ${computerSelection}`;
-
         } else if (playerSelection == "Paper" && computerSelection == "Rock") {
             playerScore++;
             results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
-
-            return `You Win! ${playerSelection} beats ${computerSelection}`;
         } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
             playerScore++;
             results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
-
-            return `You Win! ${playerSelection} beats ${computerSelection}`;
         } else {
             computerScore++;
             results.innerHTML = `<h3>"You Loose! ${computerSelection} beats ${playerSelection}"</h3>`;
-
-            return `You Lose! ${computerSelection} beats ${playerSelection}`;
         }
+
+        cpuScoreDisplay.innerHTML = `Computer Score: ${computerScore}`;
+        playerScoreDisplay.innerHTML =`Player Score: ${playerScore}`;
     }
 
     /* game() use RockPaperScissors INSIDE of this one to play a (numberOfGames) round game that keeps score and reports a winner or loser at the end. 
@@ -97,7 +91,7 @@
     let round = 1;
 
     function game(playerSelection) {
-            console.log(RockPaperScissors(playerSelection));
+            RockPaperScissors(playerSelection);
             console.log("Player One Score = " + playerScore);
             console.log("Computer Score = " + computerScore);
 
