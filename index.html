@@ -6,29 +6,39 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h1>Rock, Paper, Scissors</h1>
+    <div class="results" id="results"></div>
+    <div class="score">
+        <p id="cpu">Player:</p>
+        <p id="player">Computer:</p>
+    </div>
     <div class="rps" id="rps">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
     </div>  
 
 
 <script>
 
-    const rock = document.getElementById("rock");
-    const paper = document.getElementById("paper");
-    const scissors = document.getElementById("scissors");
+    const Rock = document.getElementById("Rock");
+    const Paper = document.getElementById("Paper");
+    const Scissors = document.getElementById("Scissors");
     const buttons = document.getElementById("rps");
+    const results = document.getElementById("results");
+    const cpuScoreDisplay = document.getElementById('cpu');
+    const playerScoreDisplay = document.getElementById('player')
 
 
-    /* getComputerChoice function: the computer will randomly return  either "rock", "paper", or "scissors"*/
+
+    /* getComputerChoice function: the computer will randomly return  either "Rock", "Paper", or "Scissors"*/
     function getComputerChoice() {
         let randomComputerChoice = Math.floor(Math.random() * 3);
         if (randomComputerChoice == 0) {
-            return "rock"
+            return "Rock"
         } else if (randomComputerChoice == 1) {
-            return "paper"
-        } return "scissors"
+            return "Paper"
+        } return "Scissors"
     }
 
     /* get player choice function: player will click button, Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked. (you can keep the console.logs for this step) */
@@ -42,9 +52,9 @@
     let playerScore = 0;
     let computerScore = 0;
 
-    /* rockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
+    /* RockPaperScissors function: plays a single round of RPS with to parameters (playerSelection & computerSelection); returns a string that declares a winner of the round. "You Lose! Paper beats Rock" [playerSelction should be case-insenstive] * return the results of this function. */
 
-    function rockPaperScissors(playerSelection, computerSelection) {
+    function RockPaperScissors(playerSelection, computerSelection) {
         // computer selection
         computerSelection = getComputerChoice();
         console.log("Player One: " + playerSelection);
@@ -52,23 +62,33 @@
 
         //game play
         if (playerSelection == computerSelection) {
+            results.innerHTML = `<h3>"It's a tie"</h3>`;
             return "It's a tie";
-        } else if (playerSelection == "rock" && computerSelection == "scissors") {
+
+        } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
             playerScore++;
+            results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
             return `You Win! ${playerSelection} beats ${computerSelection}`;
-        } else if (playerSelection == "paper" && computerSelection == "rock") {
+
+        } else if (playerSelection == "Paper" && computerSelection == "Rock") {
             playerScore++;
+            results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
+
             return `You Win! ${playerSelection} beats ${computerSelection}`;
-        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+        } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
             playerScore++;
+            results.innerHTML = `<h3>"You Win! ${playerSelection} beats ${computerSelection}"</h3>`;
+
             return `You Win! ${playerSelection} beats ${computerSelection}`;
         } else {
             computerScore++;
+            results.innerHTML = `<h3>"You Loose! ${computerSelection} beats ${playerSelection}"</h3>`;
+
             return `You Lose! ${computerSelection} beats ${playerSelection}`;
         }
     }
 
-    /* game() use rockPaperScissors INSIDE of this one to play a (numberOfGames) round game that keeps score and reports a winner or loser at the end. 
+    /* game() use RockPaperScissors INSIDE of this one to play a (numberOfGames) round game that keeps score and reports a winner or loser at the end. 
     
     */
 
@@ -77,7 +97,7 @@
     let round = 1;
 
     function game(playerSelection) {
-            console.log(rockPaperScissors(playerSelection));
+            console.log(RockPaperScissors(playerSelection));
             console.log("Player One Score = " + playerScore);
             console.log("Computer Score = " + computerScore);
 
@@ -104,7 +124,7 @@ let round = 1;
 function game() {
     for (let i = 0; i < numberOfGames; i++) {
         console.log(`Round: ${round}`);
-        console.log(rockPaperScissors());
+        console.log(RockPaperScissors());
         console.log("Player One Score = " + playerScore);
         console.log("Computer Score = " + computerScore);
         ++round;
@@ -118,3 +138,30 @@ function game() {
         } return "Computer wins the game!";
     }
 } -->
+
+<!-- 
+
+function RockPaperScissors(playerSelection, computerSelection) {
+    // computer selection
+    computerSelection = getComputerChoice();
+    console.log("Player One: " + playerSelection);
+    console.log("Computer: " + computerSelection);
+
+    //game play
+    if (playerSelection == computerSelection) {
+        return "It's a tie";
+    } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else {
+        computerScore++;
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
+} -->
+
