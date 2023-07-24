@@ -4,24 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+
+    <style>
+
+        /* || RESET */
+
+        html {
+            box-sizing: border-box;
+        }
+        
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        
+        body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        
+        ol, ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background-color: rgb(52, 4, 97);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+        main {
+            background-color: white;
+            padding: 5rem;
+            border-radius: 1rem;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            padding: .5rem 1rem;
+            border: none;
+            border-radius: .25rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        #Rock {
+            background-color: #445181;
+        }
+
+        #Paper {
+            background-color: #c3673a;
+        }
+
+        #Scissors {
+            background-color: #c33aa1;
+        }
+
+        #replay {
+            background-color: #3ac33c;
+        }
+
+        .score, .selection {
+            grid-template-columns: repeat(2fr);
+        }
+
+
+    </style>
 </head>
 <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <div class="results" id="results"></div>
-    <div class="selection">
-        <p id="p-selection">Player selection:</p>
-        <p id="cpu-selection">Computer selection:</p>
-    </div>
-    <div class="score">
-        <p id="player">Player score:</p>
-        <p id="cpu">Computer score:</p>
-    </div>
-    <div class="rps" id="rps">
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
-    </div>
-    <button id="replay" style="display:none;">Play Again</button>  
+    <main>
+        <h1>Rock, Paper, Scissors</h1>
+        <div class="results" id="results"></div>
+        <div class="selection">
+            <p id="p-selection">Player selection:</p>
+            <p id="cpu-selection">Computer selection:</p>
+        </div>
+        <div class="score">
+            <p id="player">Player score:</p>
+            <p id="cpu">Computer score:</p>
+        </div>
+        <div class="rps" id="rps">
+            <button class="btn" id="Rock">Rock</button>
+            <button class="btn" id="Paper">Paper</button>
+            <button class="btn" id="Scissors">Scissors</button>
+        </div>
+        <button class="btn" id="replay" style="display:none;" >Play Again</button>
+        
+    </main>
 
 
 <script>
@@ -117,16 +208,14 @@
             }
          }
 
-    i++
+         i++
     
-    function gameOver(statment){
-        document.body.insertBefore(finalScore, results);
-        finalScore.innerHTML = statment;
-        buttons.style.display = "none";
-        playAgainBtn.style.display = "block";
-    }
-
-
+        function gameOver(statement){
+            results.parentElement.insertBefore(finalScore, results);
+            finalScore.innerHTML = statement;
+            buttons.style.display = "none";
+            playAgainBtn.style.display = "block";
+        }
     }
 
 
